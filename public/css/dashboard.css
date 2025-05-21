@@ -1,0 +1,101 @@
+/* Reset some defaults */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Overall page styling */
+body {
+  font-family: 'Poppins', sans-serif;
+  background: #f4f4f4;
+  color: #333;
+}
+
+/* Header styling */
+header {
+  background: #4da8da;
+  color: white;
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+header h1 {
+  margin: 0;
+}
+
+/* Main content styling */
+main {
+  padding: 20px;
+}
+
+section {
+  margin-bottom: 30px;
+}
+
+section h2 {
+  margin-bottom: 10px;
+  font-size: 1.4rem;
+  color: #4da8da;
+}
+
+/* List styling for subjects and enrollments */
+#subjectsList ul, #enrollmentsList ul {
+  list-style: none;
+  padding: 0;
+}
+
+#subjectsList li, #enrollmentsList li {
+  background: #fff;
+  border: 1px solid #ddd;
+  margin-bottom: 10px;
+  padding: 10px;
+  border-radius: 4px;
+}
+
+/* Styling for the enroll buttons */
+#subjectsList li button {
+  margin-left: 10px;
+  background: #3c8cba;
+  color: #fff;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+#subjectsList li button:hover {
+  background: #337aa3;
+}
+
+/* Styling for the "View COR" button */
+#viewCORButton {
+  display: block;
+  margin-top: 20px;
+  padding: 10px 20px;
+  background: #4da8da;
+  color: white;
+  border: none;
+  font-size: 1rem;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+#viewCORButton:hover {
+  background: #3c8cba;
+}
+
+/* Responsive adjustments */
+@media (max-width: 600px) {
+  header, main {
+    padding: 15px;
+  }
+  header h1 {
+    font-size: 1.2rem;
+  }
+  section h2 {
+    font-size: 1.2rem;
+  }
+}

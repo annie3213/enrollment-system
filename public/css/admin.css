@@ -1,0 +1,118 @@
+/* --- Global Styles --- */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  background: #f4f7fa;
+  color: #333;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+/* --- Header --- */
+header {
+  background: linear-gradient(to right, #4da8da, #3c8cba);
+  color: #fff;
+  padding: 20px;
+  text-align: center;
+}
+
+/* --- Dashboard Layout --- */
+.dashboard-container {
+  display: flex;
+  flex: 1;
+  overflow: hidden;
+}
+
+nav {
+  width: 250px;
+  background: #2c3e50;
+  min-height: 100vh;
+  padding-top: 20px;
+  flex-shrink: 0;
+}
+
+nav ul {
+  list-style-type: none;
+}
+
+nav ul li {
+  border-bottom: 1px solid #34495e;
+}
+
+nav ul li a {
+  display: block;
+  padding: 15px 20px;
+  color: #ecf0f1;
+  text-decoration: none;
+  transition: background 0.3s ease;
+}
+
+nav ul li a:hover,
+nav ul li a.active {
+  background: #34495e;
+}
+
+.logout-btn {
+  display: block;
+  margin: 20px;
+  padding: 10px;
+  text-align: center;
+  background: #e74c3c;
+  color: #fff;
+  text-decoration: none;
+  font-weight: bold;
+  border-radius: 4px;
+  transition: background 0.3s ease;
+}
+
+.logout-btn:hover {
+  background: #c0392b;
+}
+
+/* --- Main Content --- */
+main {
+  flex: 1;
+  padding: 20px;
+  overflow-y: auto;
+}
+
+/* --- Table Styles --- */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1rem 0;
+}
+
+table th,
+table td {
+  padding: 0.85rem;
+  border: 1px solid #ddd;
+  text-align: left;
+}
+
+table th {
+  background-color: #4da8da;
+  color: #fff;
+}
+
+table tr:nth-child(even) {
+  background-color: #f8f9fa;
+}
+
+/* --- Responsive Adjustments --- */
+@media (max-width: 768px) {
+  .dashboard-container {
+    flex-direction: column;
+  }
+  
+  nav {
+    width: 100%;
+    min-height: auto;
+  }
+}

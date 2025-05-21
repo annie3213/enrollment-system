@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Subject List - Cebu Technological University</title>
+  <link rel="stylesheet" href="css/site.css">
+</head>
+<body>
+  <header>
+    <h1>Subjects Offered</h1>
+  </header>
+  <main class="container">
+    <div id="subject-list">
+      Loading subjects...
+    </div>
+  </main>
+  <script>
+    async function fetchSubjects() {
+      try {
+        const response = await fetch('/api/subjects');
+        if (response.ok) {
+          const subjects = await response.json();
+          let html = '<ul>';
+          subjects.forEach(subject => {
+            html += `<li>
+                        <strong>${subject.courseCode}</strong> - ${subject.courseName} 
+                        (${subject.schedule})
+                     </li>`;
+          });
+          html += '</ul>';
+          document.getElementById('subject-list').innerHTML = html;
+        } else {
+          document.getElementById('subject-list').innerText = 'Failed to load subjects.';
+        }
+      } catch (e) {
+        document.getElementById('subject-list').innerText = 'Error loading subjects.';
+      }
+    }
+    fetchSubjects();
+  </script>
+</body>
+</html>

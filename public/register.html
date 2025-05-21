@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Cebu Technological University - Register</title>
+  <link rel="stylesheet" href="css/register.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto">
+</head>
+<body>
+  <div class="register-container">
+    <div class="register-card">
+      <h1>Cebu Technological University</h1>
+      <h2>Student Registration</h2>
+      <form id="registerForm">
+        <div class="form-group">
+          <label for="firstName">First Name:</label>
+          <input type="text" id="firstName" name="firstName" placeholder="Enter your first name" required>
+        </div>
+        <div class="form-group">
+          <label for="middleName">Middle Name:</label>
+          <input type="text" id="middleName" name="middleName" placeholder="Enter your middle name">
+        </div>
+        <div class="form-group">
+          <label for="lastName">Last Name:</label>
+          <input type="text" id="lastName" name="lastName" placeholder="Enter your last name" required>
+        </div>
+        <div class="form-group">
+          <label for="homeAddress">Home Address:</label>
+          <textarea id="homeAddress" name="homeAddress" placeholder="Enter your home address"></textarea>
+        </div>
+        <div class="form-group">
+          <label for="contactNumber">Contact Number:</label>
+          <input type="tel" id="contactNumber" name="contactNumber" placeholder="Enter your contact number">
+        </div>
+        <div class="form-group">
+          <label>Are you a First Generation Student starting a degree?</label>
+          <div class="radio-group">
+            <label><input type="radio" name="firstGeneration" value="Yes" required> Yes</label>
+            <label><input type="radio" name="firstGeneration" value="No"> No</label>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="password">Password:</label>
+          <input type="password" id="password" name="password" placeholder="Create a password" required>
+        </div>
+        <button type="submit">Register</button>
+      </form>
+      <div id="registerMessage"></div>
+      <p class="redirect-link">Already have an account? <a href="login.html">Login Here</a></p>
+    </div>
+  </div>
+  
+  <script>
+    document.getElementById('registerForm').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      
+      // Gather form values.
+      const firstName = document.getElementById('firstName').value.trim();
+      const middleName = document.getElementById('middleName').value.trim();
+      const lastName = document.getElementById('lastName').value.trim();
+      const homeAddress = document.getElementById('homeAddress').value.trim();
+      const contactNumber = document.getElementById('contactNumber').value.trim();
+      
+      // Determine the selected value for firstGeneration.
+      const firstGenerationElems = document.getElementsByName('firstGeneration');
+      let firstGeneration = '';
+      for (const radio of firstGenerationElems) {
+        if (radio.checked) {
+          firstGeneration = radio.value;
+          break;
+        }
+      }
+      const password = document.getElementById('password').value;
+      
+      const payload = { firstName, middleName, lastName, homeAddress, contactNumber, firstGeneration, password };
+      
+      try {
+        const response = await fetch('/api/register', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload)
+        });
+        const data = await response.json();
+        const registerMessageEl = document.getElementById('registerMessage');
+        if (response.ok) {
+          registerMessageEl.style.color = 'green';
+          registerMessageEl.innerText = data.message + ". Your student ID is: " + data.studentId;
+          document.getElementById('registerForm').reset();
+        } else {
+          registerMessageEl.style.color = 'red';
+          registerMessageEl.innerText = data.message;
+        }
+      } catch (err) {
+        document.getElementById('registerMessage').style.color = 'red';
+        document.getElementById('registerMessage').innerText = 'Registration error. Please try again.';
+      }
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Enroll in a Course</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header>
+    <h2>Enroll in a Course</h2>
+  </header>
+  <main class="container">
+    <div class="card">
+      <!-- Note: Only Subject ID is required because the session stores the logged-in student's ID -->
+      <form id="enrollForm">
+        <label for="subjectId">Subject ID:</label>
+        <input type="text" id="subjectId" required>
+        <button type="submit">Enroll</button>
+      </form>
+      <div id="result"></div>
+    </div>
+    <p><a href="index.html">Back to Home</a></p>
+  </main>
+  <script>
+    // On page load, verify that the student is authenticated.
+    window.addEventListener('DOMContentLoaded', async () => {
+      try {
+        const response = await fetch('/api/check-auth');
+        if (!response.ok) {
+          window.location.href = "login.html";
+        }
+      } catch (error) {
+        window.location.href = "login.html";
+      }
+    });
+    
+    // Handle enrollment form submission.
+    document.getElementById('enrollForm').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const subjectId = document.getElementById('subjectId').value;
+      try {
+        const response = await fetch('/api/enroll', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ subjectId })
+        });
+        const data = await response.json();
+        document.getElementById('result').innerText = data.message;
+      } catch (error) {
+        document.getElementById('result').innerText = 'Enrollment failed.';
+      }
+    });
+  </script>
+</body>
+</html>

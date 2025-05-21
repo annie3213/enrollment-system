@@ -1,0 +1,79 @@
+/* Base styling */
+body {
+  margin: 0;
+  padding: 0;
+  background: #f7f7f7;
+  font-family: 'Roboto', sans-serif;
+}
+
+/* Center the login card vertically and horizontally */
+.login-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+/* Login card design */
+.login-card {
+  background: #fff;
+  padding: 40px;
+  border-radius: 8px;
+  width: 100%;
+  max-width: 400px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+/* University name and page title */
+.login-card h1 {
+  color: #2c3e50;
+  margin-bottom: 10px;
+}
+
+.login-card h2 {
+  color: #34495e;
+  font-weight: normal;
+  margin-bottom: 30px;
+}
+
+/* Form styling */
+.login-card form {
+  display: flex;
+  flex-direction: column;
+}
+
+.login-card label {
+  text-align: left;
+  margin-bottom: 5px;
+  color: #555;
+}
+
+.login-card input {
+  padding: 10px;
+  margin-bottom: 20px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 16px;
+}
+
+/* Login button styling */
+.login-card button {
+  padding: 10px;
+  background: #2c3e50;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.login-card button:hover {
+  background: #34495e;
+}
+
+/* Message area for login feedback */
+#loginMessage {
+  margin-top: 15px;
+  color: red;
+}

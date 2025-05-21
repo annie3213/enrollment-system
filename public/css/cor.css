@@ -1,0 +1,96 @@
+/* General styling */
+body {
+  font-family: 'Poppins', sans-serif;
+  background: #f4f4f4;
+  color: #333;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+/* Certificate container */
+.cor-container {
+  background: white;
+  width: 80%;
+  max-width: 700px;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+/* Header section */
+header h1 {
+  font-size: 24px;
+  margin-bottom: 10px;
+  color: #4da8da;
+}
+
+header p {
+  font-size: 16px;
+  color: #555;
+}
+
+/* Student information and course list */
+#studentInfo {
+  margin-top: 20px;
+  padding: 10px;
+  background: #f4f4f4;
+  border-radius: 6px;
+}
+
+#coursesList ul {
+  list-style: none;
+  padding: 0;
+}
+
+#coursesList li {
+  background: #fff;
+  padding: 10px;
+  margin: 5px 0;
+  border-radius: 4px;
+  border: 1px solid #ddd;
+}
+
+/* Button container */
+.button-container {
+  margin-top: 20px;
+}
+
+button {
+  padding: 10px 15px;
+  font-size: 16px;
+  margin: 5px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+#printButton {
+  background: #4da8da;
+  color: white;
+}
+
+#printButton:hover {
+  background: #3c8cba;
+}
+
+#backToDashboard {
+  background: #ddd;
+}
+
+#backToDashboard:hover {
+  background: #bbb;
+}
+
+/* Print-specific styles */
+@media print {
+  button {
+    display: none;
+  }
+  .cor-container {
+    box-shadow: none;
+    border: none;
+  }
+}
